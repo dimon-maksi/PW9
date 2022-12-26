@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#title{
+    position: relative;
+    left: 50%;
+    color: brown;
+}
+#type,
+#cards,
+#footer {
+    display: flex;
+}
+#type {
+    flex-flow: column;
+}
+#cards {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    overflow-y: scroll;
+    max-height: 90vh;
+}
+.card {
+    display: flex;    
+    flex-flow: column;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    margin: 10px;
+    padding: 10px;
+    width: 350px;
+    height: auto;
+}
+.card div:first-child{
+    display: flex;
+    flex-flow: row wrap;
+}
+.card div p{
+    margin: 5px;
+}
+.card div+div{
+    display: flex;
+    flex-flow: column;
+    margin-top: auto;
+}
+.card div+div div{
+    margin-top: 5px;
+    border: 1px solid rgba(231, 205, 55, 0.52);
+}
+#cards .card div img{
+    width: 330px;
+}
+#footer {
+    flex-flow: row;
+    justify-content: space-between;
+    margin: 0 20px;
+}
+
+input[type="radio"]{
+    display: none;
+}
+#buttoms *{
+    margin-bottom: 5px;
+    padding: 10px;
+    
+}
+#buttoms label{
+    background-color: rgb(175, 162, 162);
+    border-radius: 5px;
+    text-align: center;
+    font-size:25px;
+    cursor: pointer;
+    display: flex;
+    width: 100px;
+    height: 30px;
+    align-items: center;
+}
+#buttons input[type="radio"]:checked+label{
+    background-color: lightgrey;
+}
+
+#type:has(input:checked) ~ #cards .card{
+    display: none;
+}
+#type:has(#human:checked) ~ #cards .human{
+    display: flex;
+}
+#type:has(#anime:checked) ~ #cards .anime{
+    display: flex;
+}
+#type:has(#animal:checked) ~ #cards .animal{
+    display: flex;
+}
+#type:has(#reset:checked) ~ #cards .card{
+    display: flex;
+}
+
+@media (min-width: 1200px){
+    #main > *{
+        display: flex;
+        flex-direction:row-reverse;
+    }
+    #type{
+        position:absolute;
+        right: 0;
+        width: 20%;
+        background-color: rgba(182, 182, 182, 0.5);
+        border-radius: 10px;
+        display: inline;
+        margin-right: 30px;
+        height: 90%;
+        margin-top: 10px;
+    }
+    #type > *{
+        margin: 10px;
+    }
+    #cards{
+        width: 75%;
+    }
+}
+@media (max-width: 1200px){
+    #buttoms{
+        display: flex;
+        flex-direction: row;
+    }
+    #range{
+        display: none;
+    }
+    .card div+div{
+        display: none;
+    }
+    .card:first-child{
+        display: block;
+    }
+    #cards{
+        height: 80vh;
+    }
+}
+@media (max-width: 730px){
+    #buttoms{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: auto;
+    }
+    #cards{
+        display: block;
+        height: 70vh;
+    }
+    #cards > *{
+        margin: 20px auto;
+    }
+}
